@@ -1,0 +1,45 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Packages/com.stubblefield.texturepacker/Editor/TexturePackerEditor.uss?fileID=7433441132597879392&amp;guid=8dd22223d1522694a839fb324ed71d62&amp;type=3#TexturePackerEditor"/>
+    <ui:VisualElement style="flex-grow: 1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; align-items: stretch;">
+        <ui:VisualElement name="source-texture-r" class="source-texture__container" style="flex-grow: 0; flex-direction: row; align-items: flex-start; justify-content: space-between; align-self: auto; align-content: auto; flex-shrink: 0;">
+            <ui:Label text="R" class="source-texture__label" style="width: 25px; -unity-text-align: middle-left; justify-content: flex-start; align-self: center;"/>
+            <uie:ObjectField binding-path="tex0" class="source-texture__object-field" style="flex-grow: 1;"/>
+            <ui:EnumField binding-path="channel0" class="source-texture__enum-field" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="source-texture-g" class="source-texture__container" style="flex-grow: 0; flex-direction: row; align-items: flex-start; justify-content: space-between; align-self: auto; align-content: auto; flex-shrink: 0;">
+            <ui:Label text="G" class="source-texture__label" style="width: 25px; -unity-text-align: middle-left; justify-content: flex-start; align-self: center;"/>
+            <uie:ObjectField binding-path="tex1" class="source-texture__object-field" style="flex-grow: 1;"/>
+            <ui:EnumField binding-path="channel1" class="source-texture__enum-field" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="source-texture-b" class="source-texture__container" style="flex-grow: 0; flex-direction: row; align-items: flex-start; justify-content: space-between; align-self: auto; align-content: auto; flex-shrink: 0;">
+            <ui:Label text="B" class="source-texture__label" style="width: 25px; -unity-text-align: middle-left; justify-content: flex-start; align-self: center;"/>
+            <uie:ObjectField binding-path="tex2" class="source-texture__object-field" style="flex-grow: 1;"/>
+            <ui:EnumField binding-path="channel2" class="source-texture__enum-field" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="source-texture-a" class="source-texture__container" style="flex-grow: 0; flex-direction: row; align-items: flex-start; justify-content: space-between; align-self: auto; align-content: auto; flex-shrink: 0;">
+            <ui:Label text="A" class="source-texture__label" style="width: 25px; -unity-text-align: middle-left; justify-content: flex-start; align-self: center;"/>
+            <uie:ObjectField binding-path="tex3" class="source-texture__object-field" style="flex-grow: 1;"/>
+            <ui:EnumField binding-path="channel3" class="source-texture__enum-field" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:IntegerField binding-path="resolution" label="Resolution"/>
+        <ui:Toggle binding-path="isColorData" label="Is Color Data"/>
+        <ui:Button text="Create" name="cs-create-button" style="margin-bottom: 5px;"/>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; margin-bottom: 8px;">
+            <ui:Label text="Path:" style="min-width: 60px;"/>
+            <ui:Label text="Assets/New Packed Texture.png" name="cs-destination-path" style="overflow: hidden; flex-wrap: nowrap; padding-bottom: 6px; flex-shrink: 1; flex-direction: row; min-height: 15px; white-space: normal;"/>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; min-height: 15px;">
+            <ui:Label text="Preview:" style="min-width: 60px;"/>
+            <ui:VisualElement name="channel-preview-buttons-container" style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
+                <ui:Button text="RGB" name="cs-button-rgb" class="cs-channel-preview-button"/>
+                <ui:Button text="RGBA" name="cs-button-rgba" class="cs-channel-preview-button"/>
+                <ui:Button text="Split" name="cs-button-split" class="cs-channel-preview-button"/>
+                <ui:Button text="R" name="cs-button-r" class="cs-channel-preview-button"/>
+                <ui:Button text="G" name="cs-button-g" class="cs-channel-preview-button"/>
+                <ui:Button text="B" name="cs-button-b" class="cs-channel-preview-button"/>
+                <ui:Button text="A" name="cs-button-a" class="cs-channel-preview-button"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Image name="cs-preview"/>
+    </ui:VisualElement>
+</ui:UXML>

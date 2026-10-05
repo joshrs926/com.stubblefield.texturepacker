@@ -1,0 +1,12 @@
+{
+  "name": "com.stubblefield.texturepacker",
+  "displayName": "Texture Packer",
+  "version": "0.1.0",
+  "unity": "6000.3",
+  "description": "An editor tool that allows you to select up to four input textures and pack them into the channels of one output texture.",
+  "author": {
+    "name": "Joshua Stubblefield",
+    "email": "joshrs926@gmail.com"
+  },
+  "hideInEditor": false
+}
