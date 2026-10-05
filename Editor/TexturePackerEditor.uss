@@ -19,10 +19,6 @@
 
 #cs-preview {
     aspect-ratio: 1;
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
 }
 
 .cs-channel-preview-button {
@@ -32,5 +28,3 @@
 .cs-channel-preview-button--selected {
     background-color: rgb(44, 93, 135);
 }
-
-

@@ -28,7 +28,7 @@
             <ui:Label text="Path:" style="min-width: 60px;"/>
             <ui:Label text="Assets/New Packed Texture.png" name="cs-destination-path" style="overflow: hidden; flex-wrap: nowrap; padding-bottom: 6px; flex-shrink: 1; flex-direction: row; min-height: 15px; white-space: normal;"/>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row; min-height: 15px;">
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; min-height: 15px; margin-bottom: 5px;">
             <ui:Label text="Preview:" style="min-width: 60px;"/>
             <ui:VisualElement name="channel-preview-buttons-container" style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
                 <ui:Button text="RGB" name="cs-button-rgb" class="cs-channel-preview-button"/>

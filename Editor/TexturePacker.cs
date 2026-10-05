@@ -31,7 +31,8 @@ namespace Stubblefield.TexturePacker.Editor
         public RenderTexture PreviewRT => previewRt;
         public string DestinationPath => destinationLocalPath;
 
-        const GraphicsFormat format = GraphicsFormat.R16G16B16A16_UNorm;
+        const GraphicsFormat linearFormat = GraphicsFormat.R8G8B8A8_UNorm;
+        const GraphicsFormat srgbFormat = GraphicsFormat.R8G8B8A8_SRGB;
         const string mainShaderName = "Custom/TexturePacker";
         const string previewShaderName = "Custom/TexturePackerPreview";
         
@@ -47,7 +48,7 @@ namespace Stubblefield.TexturePacker.Editor
             Render();
             RenderTexture active = RenderTexture.active;
             RenderTexture.active = mainRt;
-            Texture2D tex = new(resolution, resolution, format, TextureCreationFlags.None);
+            Texture2D tex = new(resolution, resolution, linearFormat, TextureCreationFlags.None);
             tex.ReadPixels(new Rect(0, 0, resolution, resolution), 0, 0);
             tex.Apply();
             RenderTexture.active = active;
@@ -91,18 +92,18 @@ namespace Stubblefield.TexturePacker.Editor
                 previewMaterial = new Material(previewShader);
             }
             if (!previewMaterial) return;
-            resolution = Math.Max(resolution, 1);
-            if (mainRt && (mainRt.width != resolution || mainRt.graphicsFormat != format || mainRt.sRGB != isColorData))
+            resolution = Math.Clamp(resolution, 1, 16384);
+            if (mainRt && (mainRt.width != resolution || mainRt.graphicsFormat != linearFormat || mainRt.sRGB != isColorData))
             {
                 mainRt.Release();
                 DestroyImmediate(mainRt);
             }
-            if (previewRt && (previewRt.width != resolution || previewRt.graphicsFormat != format || previewRt.sRGB != isColorData))
+            if (previewRt && (previewRt.width != resolution || previewRt.graphicsFormat != linearFormat || previewRt.sRGB != isColorData))
             {
                 previewRt.Release();
                 DestroyImmediate(previewRt);
             }
-            RenderTextureDescriptor descriptor = new(resolution, resolution, format, 0);
+            RenderTextureDescriptor descriptor = new(resolution, resolution, linearFormat, 0);
             descriptor.sRGB = isColorData;
             if (!mainRt)
             {
@@ -143,7 +144,7 @@ namespace Stubblefield.TexturePacker.Editor
                     directory = Path.GetDirectoryName(existingAssetPath);
                 }
             }
-            localPath = Path.Combine(directory ?? "", "New Packed Texture.png");
+            localPath = Path.Combine(directory ?? "", "_New Packed Texture.png");
             localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
             absolutePath = Path.Combine(Application.dataPath, localPath.Substring(7, localPath.Length - 7));
         }
